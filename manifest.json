@@ -1,20 +1,28 @@
 {
-
+  "applications": {
+    "gecko": {
+      "id": "session-state@example.com",
+      "strict_min_version": "57.0a1"
+    }
+  },
   "manifest_version": 2,
   "name": "Realoadify",
   "version": "0.1",
 
   "description": "A simple reload utility for webdevelopment",
-
   "icons": {
     "48": "icons/realoadify-48.png"
   },
 
-  "content_scripts": [
-    {
-      "matches": ["*://*.mozilla.org/*"],
-      "js": ["realoadify.js"]
-    }
-  ]
+  "background": {
+    "scripts": ["realoadify.js"]
+  },
 
+  "permissions": ["<all_urls>", "sessions"],
+
+  "browser_action": {
+    "default_icon": "icons/realoadify-48.png",
+    "default_title": "Realoadify",
+    "default_popup": "popup/realoadify-menu.html"
+  }
 }
